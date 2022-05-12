@@ -4,6 +4,7 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import ru.bot.service.SendMessageOperationsService;
 
 import static ru.bot.cons.VarConst.START;
 
@@ -12,14 +13,12 @@ public class CoreBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
+        SendMessageOperationsService sendMessageOperationsService = new SendMessageOperationsService();
         if (update.hasMessage() && update.getMessage().hasText()){
             switch (update.getMessage().getText()){
                 case START:
-                    SendMessage sendMessage = new SendMessage();
-                    sendMessage.setChatId(String.valueOf(update.getMessage().getChatId()));
-                    sendMessage.setText("Ну, привет");
                     try {
-                        execute(sendMessage);
+                        execute(sendMessageOperationsService.createGreetingInformation(update));
                     } catch (TelegramApiException e) {
                         e.printStackTrace();
                     }
