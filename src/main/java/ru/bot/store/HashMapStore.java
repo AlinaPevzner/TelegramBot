@@ -15,7 +15,7 @@ public class HashMapStore implements BaseStore {
     @Override
     public void save(LocalDate key, String deal) {
         if(localStore.containsKey(key)){
-            List<String> alreadyExistDeals = (localStore.get(key));
+            ArrayList<String> alreadyExistDeals = new ArrayList<>(localStore.get(key));
             alreadyExistDeals.add(deal);
             localStore.put(key, alreadyExistDeals);
         } else {
@@ -24,7 +24,7 @@ public class HashMapStore implements BaseStore {
     }
 
     @Override
-    public List<String> selectAll(LocalDate date) {
-        return null;
+    public List<String> selectAll(LocalDate key) {
+        return localStore.get(key);
     }
 }
