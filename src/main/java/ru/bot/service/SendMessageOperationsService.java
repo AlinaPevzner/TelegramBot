@@ -51,4 +51,8 @@ public class SendMessageOperationsService {
         sendMessage.setText(message.toString());
         return sendMessage;
     }
+
+//    public SendMessage createInstructionMessage(Update update) {
+//        SendMessage sendMessage = createSimpleMessage(update);
+//    }
 }

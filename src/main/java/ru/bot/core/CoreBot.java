@@ -22,6 +22,7 @@ public class CoreBot extends TelegramLongPollingBot {
             switch (update.getMessage().getText()){
                 case START:
                     executeMessage(sendMessageOperationsService.createGreetingInformation(update));
+                    //executeMessage(sendMessageOperationsService.createInstructionMessage(update));
                     break;
                 case START_PLANNING:
                     startPlanning = true;
