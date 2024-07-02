@@ -36,7 +36,7 @@ public class CoreBot extends TelegramLongPollingBot {
                     if (startPlanning == false) {
                         executeMessage(sendMessageOperationsService.createSimpleMessage2(update, store.selectAll(LocalDate.now())));
                     }
-                //записать все хеш мапу fsdsfd
+                //записать все хеш мапу fsdsfd gsfdagd
                 default:
                     if (startPlanning == true) {
                         store.save(LocalDate.now(), update.getMessage().getText());
